@@ -69,9 +69,7 @@ const Home: NextPage = () => {
       <canvas ref={canvasRef} className="absolute" />
       <div className="flex flex-col items-center p-10 bg-black bg-opacity-50 rounded-xl shadow-2xl transform hover:scale-105 transition-transform duration-300 hover:blur-sm hover:grayscale-0 grayscale hover:shadow-2xl">
         <h1 className="text-center text-transparent bg-gradient-to-r from-indigo-400 via-purple-500 to-pink-600 bg-clip-text animate-flicker">
-          <span className="block text-2xl mb-2 tracking-wider font-bold animate-bounce">
-            Welcome to
-          </span>
+          <span className="block text-2xl mb-2 tracking-wider font-bold animate-bounce">Welcome to</span>
           <span className="block text-8xl font-extrabold">Morphex</span>
         </h1>
         <div className="flex items-center mt-6">
