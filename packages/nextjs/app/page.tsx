@@ -1,70 +1,99 @@
 "use client";
 
-import Link from "next/link";
+//import Link from "next/link";
 import type { NextPage } from "next";
-import { useAccount } from "wagmi";
-import { BugAntIcon, MagnifyingGlassIcon } from "@heroicons/react/24/outline";
-import { Address } from "~~/components/scaffold-eth";
+
+//import { useAccount } from "wagmi";
+//import { BugAntIcon, MagnifyingGlassIcon } from "@heroicons/react/24/outline";
+//import { Address } from "~~/components/scaffold-eth";
+
+
+import React, { useEffect, useRef } from 'react';
 
 const Home: NextPage = () => {
-  const { address: connectedAddress } = useAccount();
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  useEffect(() => {
+    if (!canvasRef.current) return;
+
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const asteroids: { x: number; y: number; radius: number; vx: number; vy: number; color: string }[] = [];
+
+    const initAsteroids = () => {
+      for (let i = 0; i < 300; i++) {
+        const x = Math.random() * canvas.width;
+        const y = Math.random() * canvas.height;
+        const radius = Math.random() * 2 + 1; // Even smaller asteroid radius
+        const vx = (Math.random() - 0.5) * 2;
+        const vy = (Math.random() - 0.5) * 2;
+        const color = `rgb(${Math.random() * 100 + 155}, ${Math.random() * 100 + 155}, ${Math.random() * 100 + 155})`;
+        asteroids.push({ x, y, radius, vx, vy, color });
+      }
+    };
+
+    const drawAsteroids = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      asteroids.forEach((asteroid) => {
+        ctx.beginPath();
+        ctx.arc(asteroid.x, asteroid.y, asteroid.radius, 0, Math.PI * 2);
+        ctx.fillStyle = asteroid.color;
+        ctx.fill();
+
+        asteroid.x += asteroid.vx;
+        asteroid.y += asteroid.vy;
+
+        if (asteroid.x + asteroid.radius > canvas.width || asteroid.x - asteroid.radius < 0) {
+          asteroid.vx = -asteroid.vx;
+        }
+        if (asteroid.y + asteroid.radius > canvas.height || asteroid.y - asteroid.radius < 0) {
+          asteroid.vy = -asteroid.vy;
+        }
+      });
+
+      requestAnimationFrame(drawAsteroids);
+    };
+
+    initAsteroids();
+    drawAsteroids();
+  }, []);
 
   return (
-    <>
-      <div className="flex items-center flex-col flex-grow pt-10">
-        <div className="px-5">
-          <h1 className="text-center">
-            <span className="block text-2xl mb-2">Welcome to</span>
-            <span className="block text-4xl font-bold">Scaffold-ETH 2</span>
-          </h1>
-          <div className="flex justify-center items-center space-x-2">
-            <p className="my-2 font-medium">Connected Address:</p>
-            <Address address={connectedAddress} />
-          </div>
-          <p className="text-center text-lg">
-            Get started by editing{" "}
-            <code className="italic bg-base-300 text-base font-bold max-w-full break-words break-all inline-block">
-              packages/nextjs/app/page.tsx
-            </code>
-          </p>
-          <p className="text-center text-lg">
-            Edit your smart contract{" "}
-            <code className="italic bg-base-300 text-base font-bold max-w-full break-words break-all inline-block">
-              YourContract.sol
-            </code>{" "}
-            in{" "}
-            <code className="italic bg-base-300 text-base font-bold max-w-full break-words break-all inline-block">
-              packages/hardhat/contracts
-            </code>
-          </p>
+    <div className="min-h-screen flex items-center justify-center bg-black">
+      <canvas ref={canvasRef} className="absolute" />
+      <div className="flex flex-col items-center p-10 bg-black bg-opacity-50 rounded-xl shadow-2xl transform hover:scale-105 transition-transform duration-300 hover:blur-sm hover:grayscale-0 grayscale hover:shadow-2xl">
+        <h1 className="text-center text-transparent bg-gradient-to-r from-indigo-400 via-purple-500 to-pink-600 bg-clip-text animate-flicker">
+          <span className="block text-2xl mb-2 tracking-wider font-bold animate-bounce">
+            Welcome to
+          </span>
+          <span className="block text-8xl font-extrabold">Morphex</span>
+        </h1>
+        <div className="flex items-center mt-6">
+          <div className="w-6 h-6 bg-indigo-400 rounded-full mr-4 animate-pulse"></div>
+          <div className="w-6 h-6 bg-purple-500 rounded-full mr-4 animate-pulse delay-75"></div>
+          <div className="w-6 h-6 bg-pink-600 rounded-full animate-pulse delay-150"></div>
         </div>
-
-        <div className="flex-grow bg-base-300 w-full mt-16 px-8 py-12">
-          <div className="flex justify-center items-center gap-12 flex-col sm:flex-row">
-            <div className="flex flex-col bg-base-100 px-10 py-10 text-center items-center max-w-xs rounded-3xl">
-              <BugAntIcon className="h-8 w-8 fill-secondary" />
-              <p>
-                Tinker with your smart contract using the{" "}
-                <Link href="/debug" passHref className="link">
-                  Debug Contracts
-                </Link>{" "}
-                tab.
-              </p>
-            </div>
-            <div className="flex flex-col bg-base-100 px-10 py-10 text-center items-center max-w-xs rounded-3xl">
-              <MagnifyingGlassIcon className="h-8 w-8 fill-secondary" />
-              <p>
-                Explore your local transactions with the{" "}
-                <Link href="/blockexplorer" passHref className="link">
-                  Block Explorer
-                </Link>{" "}
-                tab.
-              </p>
-            </div>
-          </div>
+        <div className="mt-8 animate-spin-slow">
+          <svg
+            className="w-16 h-16 text-white"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <polygon points="12 2 2 9 12 16 22 9 12 2"></polygon>
+          </svg>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
