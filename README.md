@@ -1,11 +1,6 @@
-# 🏗 Scaffold-ETH 2
+# Morphex: Your own decentralized exchange
 
-<h4 align="center">
-  <a href="https://docs.scaffoldeth.io">Documentation</a> |
-  <a href="https://scaffoldeth.io">Website</a>
-</h4>
-
-🧪 An open-source, up-to-date toolkit for building decentralized applications (dapps) on the Ethereum blockchain. It's designed to make it easier for developers to create and deploy smart contracts and build user interfaces that interact with those contracts.
+Morphex is a decentralized exchange (DEX) project aimed at enabling developers to create their own DEX similar to Uniswap v1. It leverages Scaffold-ETH 2, an open-source toolkit designed to make it easier for developers to build decentralized applications (dApps) on the Ethereum blockchain.
 
 ⚙️ Built using NextJS, RainbowKit, Hardhat, Wagmi, Viem, and Typescript.
 
@@ -16,6 +11,8 @@
 - 🔐 **Integration with Wallet Providers**: Connect to different wallet providers and interact with the Ethereum network.
 
 ![Debug Contracts tab](https://github.com/scaffold-eth/scaffold-eth-2/assets/55535804/b237af0c-5027-4849-a5c1-2e31495cccb1)
+
+![Debug Contracts tab](https://github.com/notlelouch/Morphex/blob/main/packages/nextjs/public/Screenshot%202024-06-05%20at%205.28.08%E2%80%AFAM.png)
 
 ## Requirements
 
@@ -32,8 +29,8 @@ To get started with Scaffold-ETH 2, follow the steps below:
 1. Clone this repo & install dependencies
 
 ```
-git clone https://github.com/scaffold-eth/scaffold-eth-2.git
-cd scaffold-eth-2
+git clone https://github.com/<your-username>/Morphex.git
+cd Morphex
 yarn install
 ```
 
@@ -59,14 +56,14 @@ This command deploys a test smart contract to the local network. The contract is
 yarn start
 ```
 
-Visit your app on: `http://localhost:3000`. You can interact with your smart contract using the `Debug Contracts` page. You can tweak the app config in `packages/nextjs/scaffold.config.ts`.
+Visit app on: `http://localhost:3000`. You can interact with the smart contracts using the `Debug Contracts` page. You can tweak the app config in `packages/nextjs/scaffold.config.ts`.
 
 **What's next**:
 
-- Edit your smart contract `YourContract.sol` in `packages/hardhat/contracts`
-- Edit your frontend homepage at `packages/nextjs/app/page.tsx`. For guidance on [routing](https://nextjs.org/docs/app/building-your-application/routing/defining-routes) and configuring [pages/layouts](https://nextjs.org/docs/app/building-your-application/routing/pages-and-layouts) checkout the Next.js documentation.
-- Edit your deployment scripts in `packages/hardhat/deploy`
-- Edit your smart contract test in: `packages/hardhat/test`. To run test use `yarn hardhat:test`
+- Edit smart contracts `Token.sol` and `Exchange.sol` in `packages/hardhat/contracts`
+- Edit the frontend homepage at `packages/nextjs/app/page.tsx`. For guidance on [routing](https://nextjs.org/docs/app/building-your-application/routing/defining-routes) and configuring [pages/layouts](https://nextjs.org/docs/app/building-your-application/routing/pages-and-layouts) checkout the Next.js documentation.
+- Edit deployment scripts in `packages/hardhat/deploy`
+- Edit smart contract test in: `packages/hardhat/test`. To run test use `yarn hardhat:test`
 
 ## Documentation
 
