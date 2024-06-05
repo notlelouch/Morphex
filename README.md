@@ -63,15 +63,10 @@ Visit app on: `http://localhost:3000`. You can interact with the smart contracts
 - Edit deployment scripts in `packages/hardhat/deploy`
 - Edit smart contract test in: `packages/hardhat/test`. To run test use `yarn hardhat:test`
 
-## Documentation
+## License
+This project is licensed under the MIT License.
 
-Visit our [docs](https://docs.scaffoldeth.io) to learn how to start building with Scaffold-ETH 2.
+## Contributing
 
-To know more about its features, check out our [website](https://scaffoldeth.io).
+Contributions are welcome! If you have ideas for improvements, new features, or bug fixes, please open an issue or submit a pull request.
 
-## Contributing to Scaffold-ETH 2
-
-We welcome contributions to Scaffold-ETH 2!
-
-Please see [CONTRIBUTING.MD](https://github.com/scaffold-eth/scaffold-eth-2/blob/main/CONTRIBUTING.md) for more information and guidelines for contributing to Scaffold-ETH 2.
-# Morphex
