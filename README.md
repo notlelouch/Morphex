@@ -10,8 +10,6 @@ Morphex is a decentralized exchange (DEX) project aimed at enabling developers t
 - 🔥 **Burner Wallet & Local Faucet**: Quickly test your application with a burner wallet and local faucet.
 - 🔐 **Integration with Wallet Providers**: Connect to different wallet providers and interact with the Ethereum network.
 
-![Debug Contracts tab](https://github.com/scaffold-eth/scaffold-eth-2/assets/55535804/b237af0c-5027-4849-a5c1-2e31495cccb1)
-
 ![Debug Contracts tab](https://github.com/notlelouch/Morphex/blob/main/packages/nextjs/public/Screenshot%202024-06-05%20at%205.28.08%E2%80%AFAM.png)
 
 ## Requirements
